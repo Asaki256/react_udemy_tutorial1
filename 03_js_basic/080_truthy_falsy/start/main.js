@@ -15,21 +15,23 @@ const a = 0;
 let result = a ? 10 : -10;
 console.log(result);
 
-const falsy = 0;
+const falsy = "0";
 const truthy = 1;
 console.log(Boolean(truthy));
 console.log(Boolean(falsy));
 
 // 論理積 (&&) について
-const resultA = "" && "foo";
+// falsyがあったらその値を返す
+const resultA = "a" && "foo";
 const resultB = 2 && 1 && 0 && 3;
 const resultC = "foo" && 4;
 
-// console.log(resultA);
-// console.log(resultB);
-// console.log(resultC);
+console.log(resultA);
+console.log(resultB);
+console.log(resultC);
 
 // 理論和 (||) について
+// truthyがあったらその値を返す
 const resultD = "" || "foo";
 const resultE = 0 || 2 || 0;
 const resultF = "foo" || 4;

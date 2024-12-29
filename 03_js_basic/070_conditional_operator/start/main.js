@@ -3,15 +3,18 @@
 const a = true;
 let resultA;
 
-if(a) {
-  resultA = "true";
+if (a) {
+  resultA = "trueだよ";
 } else {
-  resultA = "false";
+  resultA = "falseだよ";
 }
 console.log(resultA);
 
-// function getResult() {
-//   return a ? "true" : "false";
-// }
+let result2 = a ? 'trueだ。' : 'falseだ';
+console.log(result2)
 
-// console.log(getResult());
+function getResult() {
+  return a ? "true" : "false";
+}
+
+console.log(getResult());
