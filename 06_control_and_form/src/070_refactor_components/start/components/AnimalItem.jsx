@@ -1,10 +1,9 @@
-const AnimalItem = ({ animal }) => {
+const AnimalItem = ({animal}) => {
   return (
-    <li key={animal}>
+    <li>
       {animal}
       {animal === "Dog" && "★"}
     </li>
-  );
-};
-
+  )
+}
 export default AnimalItem;
