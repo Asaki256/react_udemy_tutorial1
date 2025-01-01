@@ -1,3 +1,6 @@
+import List from "./List";
+import Form from "./Form";
+
 const Todo = () => {
   const todosList = [
     {
@@ -13,4 +16,14 @@ const Todo = () => {
       content: "郵便出す",
     },
   ];
+
+  return (
+    <>
+      <h2>Reminder</h2>
+      <List todosList={todosList}/>
+      <Form />
+    </>
+  )
 };
+
+export default Todo;
