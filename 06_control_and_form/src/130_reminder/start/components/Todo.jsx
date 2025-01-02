@@ -1,6 +1,6 @@
 import List from "./List";
 import Form from "./Form";
-import {useState} from "react";
+import { useState } from "react";
 
 const Todo = () => {
   const todosList = [
@@ -19,19 +19,18 @@ const Todo = () => {
   ];
   const [todos, setTodos] = useState(todosList);
   const removeTodo = (id) => {
-    const newTodos = todos
-      .filter(todo => todo.id !== id);
+    const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
-  }
+  };
   const addTodo = (todo) => {
-    setTodos([...todos, todo])
-  }
+    setTodos([...todos, todo]);
+  };
   return (
     <>
-      <List todosList={todos} removeTodo={removeTodo}/>
-      <Form addTodo={addTodo}/>
+      <List todosList={todos} removeTodo={removeTodo} />
+      <Form addTodo={addTodo} />
     </>
-  )
+  );
 };
 
 export default Todo;
