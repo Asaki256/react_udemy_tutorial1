@@ -1,5 +1,6 @@
 import List from "./List";
 import Form from "./Form";
+import {useState} from "react";
 
 const Todo = () => {
   const todosList = [
@@ -16,12 +17,19 @@ const Todo = () => {
       content: "郵便出す",
     },
   ];
-
+  const [todos, setTodos] = useState(todosList);
+  const removeTodo = (id) => {
+    const newTodos = todos
+      .filter(todo => todo.id !== id);
+    setTodos(newTodos);
+  }
+  const addTodo = (todo) => {
+    setTodos([...todos, todo])
+  }
   return (
     <>
-      <h2>Reminder</h2>
-      <List todosList={todosList}/>
-      <Form />
+      <List todosList={todos} removeTodo={removeTodo}/>
+      <Form addTodo={addTodo}/>
     </>
   )
 };

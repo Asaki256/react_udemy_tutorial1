@@ -1,14 +1,16 @@
-const List = ({todosList}) => {
+const List = ({todosList, removeTodo}) => {
   return (
-    <ul>
+    <div>
       {todosList.map(todo => {
         return (
-          <li key={todo.id}>
-            <button>完了</button>{todo.content}
-          </li>
+          <div key={todo.id}>
+            <button onClick={() => removeTodo(todo.id)}>完了</button>
+            {todo.content}
+            , ID:{todo.id}
+          </div>
         )
       })}
-    </ul>
+    </div>
   )
 }
 export default List;
