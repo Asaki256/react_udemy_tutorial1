@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import Toast from "./components/Toast";
 
@@ -8,6 +8,9 @@ const Example = () => {
     const target = document.querySelector(".container.start");
     return createPortal(children, target);
   };
+
+  const inputRef = useRef();
+  console.dir(inputRef);
 
   return (
     <div>
