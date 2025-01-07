@@ -2,32 +2,21 @@ import { useReducer } from "react";
 
 const CALC_OPTIONS = ["add", "minus", "divide", "multiply"];
 
-const reducer = (state, { type, value }) => {
-  const newState = { ...state };
-
-  if (type === "a") {
-    newState.a = +value;
-  } else if (type === "b") {
-    newState.b = +value;
-  } else if (type === "calc") {
-    switch (value) {
-      case CALC_OPTIONS[0]:
-        newState.result = newState.a + newState.b;
-        break;
-      case CALC_OPTIONS[1]:
-        newState.result = newState.a - newState.b;
-        break;
-      case CALC_OPTIONS[2]:
-        newState.result = newState.a / newState.b;
-        break;
-      case CALC_OPTIONS[3]:
-        newState.result = newState.a * newState.b;
-        break;
-    }
-  } else {
-    throw new Error("不明なエラー");
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case "change":
+      return { ...state, [payload.name]: payload.value };
+    case "add":
+      return { ...state, result: state.a + state.b };
+    case "minus":
+      return { ...state, result: state.a - state.b };
+    case "divide":
+      return { ...state, result: state.a / state.b };
+    case "multiply":
+      return { ...state, result: state.a * state.b };
+    default:
+      throw new Error("不明なエラー");
   }
-  return newState;
 };
 
 const Example = () => {
@@ -40,11 +29,11 @@ const Example = () => {
   const [state, dispatch] = useReducer(reducer, initState);
 
   const calculate = (e) => {
-    dispatch({ type: "calc", value: e.target.value });
+    dispatch({ type: e.target.value });
   };
 
   const numChangeHandler = (e) => {
-    dispatch({ type: e.target.name, value: e.target.value });
+    dispatch({ type: "change", payload: { name: e.target.name, value: parseInt(e.target.value) } });
   };
 
   return (
