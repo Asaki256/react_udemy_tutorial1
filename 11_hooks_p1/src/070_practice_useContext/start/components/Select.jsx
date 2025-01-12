@@ -1,4 +1,7 @@
-import { useNumStateContext, useNumDispatchContext } from "../context/NumContext";
+import {
+  useNumStateContext,
+  useNumDispatchContext,
+} from "../context/NumContext";
 const CALC_OPTIONS = ["add", "minus", "divide", "multiply"];
 
 const Select = () => {
@@ -8,7 +11,7 @@ const Select = () => {
     dispatch({ type: e.target.value });
   };
   return (
-    <select value={state.type} name="type" onChange={calculate}>
+    <select name="type" onChange={calculate}>
       {CALC_OPTIONS.map((type) => (
         <option key={type} value={type}>
           {type}

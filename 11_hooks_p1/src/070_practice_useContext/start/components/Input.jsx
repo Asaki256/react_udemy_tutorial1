@@ -1,14 +1,28 @@
-import { useNumStateContext, useNumDispatchContext } from "../context/NumContext";
+import {
+  useNumStateContext,
+  useNumDispatchContext,
+} from "../context/NumContext";
 const Input = ({ name }) => {
   const state = useNumStateContext();
   const dispatch = useNumDispatchContext();
   const numChangeHandler = (e) => {
-    dispatch({ type: "change", payload: { name: e.target.name, value: e.target.value } });
+    dispatch({
+      type: "change",
+      payload: {
+        name: e.target.name,
+        value: e.target.value,
+      },
+    });
   };
   return (
     <div>
       {name}:
-      <input type="number" name={name} value={state[name]} onChange={numChangeHandler} />
+      <input
+        type="number"
+        name={name}
+        value={state[name]}
+        onChange={numChangeHandler}
+      />
     </div>
   );
 };
