@@ -1,5 +1,27 @@
+import { useEffect } from "react";
+import { useState } from "react";
 const Example = () => {
-  return <></>;
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    console.log("useEffect is called!!!!");
+    window.setInterval(() => {
+      console.log("called");
+      setTime((prev) => ++prev);
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    document.title = "counter: " + time;
+    window.localStorage.setItem("time-key", time);
+  }, [time]);
+
+  return (
+    <h3>
+      <time>{time}</time>
+      <span>秒経過</span>
+    </h3>
+  );
 };
 
 export default Example;
